@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -127,3 +128,134 @@ $("#dock").on("click", Dock);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+
+    <p>
+  <a class="btn btn-outline-dark" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><img id="settings" src = "settings-outline-filled.jpg"></a>
+
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+
+       <button class="btn btn-outline-dark" id='waves'><img id='icon' src='Beach.jpg'></button>
+     <button class="btn btn-outline-dark"id='dock' ><img id='icon' src='Albert-Dock.jpg'></button>
+
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class = "data-container">
+<div class ="btc" id ="btc">
+  </div>
+
+  <div class ="eth" id ="eth">
+    </div>
+  </div>
+
+
+<script>
+
+  var requestURL = 'https://blockchain.info/ticker';
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function () {
+    var btc = request.response;
+    var data = btc['EUR']['last']
+    $('#btc').html("BTC:  " + data)
+  }
+
+  var requestURL2 = 'https://api.cryptonator.com/api/ticker/eth-eur';
+  var request2 = new XMLHttpRequest();
+  request2.open('GET', requestURL2);
+  request2.responseType = 'json';
+  request2.send();
+  request2.onload = function () {
+    var eth = request2.response;
+    var data2 = eth['ticker']['price']
+    var round = parseFloat(data2).toFixed(2);
+    $('#eth').html(round)
+  }
+
+  function updateChart(){
+    var requestURL = 'https://blockchain.info/ticker';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function () {
+      var btc = request.response;
+      var data = btc['EUR']['last']
+      $('#btc').html("BTC:  " + data)
+    }}
+
+    function updateEth(){
+      var requestURL2 = 'https://api.cryptonator.com/api/ticker/eth-eur';
+      var request2 = new XMLHttpRequest();
+      request2.open('GET', requestURL2);
+      request2.responseType = 'json';
+      request2.send();
+      request2.onload = function () {
+        var eth = request2.response;
+        var data2 = eth['ticker']['price']
+        var round = parseFloat(data2).toFixed(2);
+        $('#eth').html("ETH:  " +  round)
+      }}
+
+    function startRefresh(){
+      setTimeout(startRefresh,1000);
+      updateChart();
+      updateEth();
+    }
+    $(function(){
+      startRefresh();
+    })
+
+function Waves(){
+  $('#vvideo source').attr("src","Beach.mp4 ")
+  $("#vvideo")[0].load();
+}
+
+function Dock(){
+  $('#vvideo source').attr("src","Albert-Dock.mp4")
+  $("#vvideo")[0].load();
+}
+
+
+$("#waves").on("click", Waves);
+$("#dock").on("click", Dock);
+</script>
+
+
+    <video id="vvideo" width="100%" height="auto" preload="auto" loop muted autoplay class="video">
+            <source src="beach.mp4" type="video/mp4">
+        </video>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+>>>>>>> Initial commit
